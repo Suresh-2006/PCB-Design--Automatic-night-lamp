@@ -32,23 +32,52 @@ Here is a simple dark sensor circuit that is useful to switch ON and OFF any app
 ### Working 
 During the daytime when there is a light, the LDR has very low resistance and all voltage coming through R1 dropped with the ground. This makes the voltage at the base of the transistor very low and it will not switch ON the transistor. Because the transistor is OFF, the current will not flow through the transistor. As a result, LED will not turn ON.At night when there is no light, the LDR has high resistance and very less power dropped with the ground. This makes the voltage at the base of the transistor high to turn the transistor ON. Because the transistor is turned ON, current flows through the transistor. It flows from the positive battery terminal, through R2, the LED, and the transistor down to the negative battery terminal. As a result, the LED turns ON.The same circuit can be used for a variety of purposes. Check out the Automatic Street Light Control System using LDR application. Instead of LED, bulbs are used using a relay.
 
+## Program
+```
+int sensorPin = A0; 
+int sensorValue = 0; 
+void setup() 
+{
+Serial.begin(9600); 
+pinMode(13, OUTPUT);
+}
+void loop() 
+{
+  sensorValue = analogRead(sensorPin);
+  Serial.print("OUTPUT:");
+  Serial.println(sensorValue); 
+  delay(500);
+  if(sensorValue<=823)
+  {
+  digitalWrite(13, HIGH);  
+  delay(500);
+  }
+  else
+  {
+  digitalWrite(13, LOW);  
+  delay(500);
+  }
+}
+```
 
 
 # Circuit Diagram
+![image](https://github.com/Suresh-2006/PCB-Design--Automatic-night-lamp/assets/149347611/da804f8d-029b-4301-94eb-83a25b5b4282)
 
-![2asc](https://github.com/anishkumar-Embedded/PCB-Design--Automatic-night-lamp/assets/71547910/58ddd20b-a881-4f29-86ef-70697d50eb02)
 
 # Output
 
 ### Schematic diagram
 
+![image](https://github.com/Suresh-2006/PCB-Design--Automatic-night-lamp/assets/149347611/6f41d149-2588-4e73-9edd-2f73fdee4ce1)
 
+## Output 
 
-### Layout diagram
+## LED ON
+![image](https://github.com/Suresh-2006/PCB-Design--Automatic-night-lamp/assets/149347611/084b0cde-ded4-419f-990c-18d24ff8392d)
 
-
-
-
+## LED OFF
+![image](https://github.com/Suresh-2006/PCB-Design--Automatic-night-lamp/assets/149347611/27ae6c51-36b3-49d2-b819-149baaa67556)
 
 # Result
 Thus the automatic night lamp circuit was designed using proteus software.
